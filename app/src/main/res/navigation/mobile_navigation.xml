@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/mobile_navigation.xml"
+            app:startDestination="@+id/current_weather_fragment">
+    <fragment android:id="@+id/current_weather_fragment"
+              android:name="com.zhogolev.ui.weather.current.CurrentWeatherFragment"
+              android:label="current_weather_fragment" tools:layout="@layout/current_weather_fragment"/>
+    <fragment android:id="@+id/future_details_weather"
+              android:name="com.zhogolev.ui.weather.future.detail.FutureDetailsWeatherFragment"
+              android:label="future_details_weather_fragment" tools:layout="@layout/future_details_weather_fragment"/>
+    <fragment android:id="@+id/future_list_fragment"
+              android:name="com.zhogolev.ui.weather.future.list.FutureListWeatherListFragment"
+              android:label="future_list_weather_list_fragment"
+              tools:layout="@layout/future_list_weather_list_fragment"/>
+    <fragment android:id="@+id/settings_fragment" android:name="com.zhogolev.ui.settings.SettingFragment"
+              android:label="SettingFragment"/>
+</navigation>
