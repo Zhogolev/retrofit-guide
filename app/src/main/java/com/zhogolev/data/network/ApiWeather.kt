@@ -23,7 +23,7 @@ interface ApiWeather {
     ): Deferred<CurrentWeatherResponse>
 
     companion object {
-        fun invoke(
+        operator fun invoke(
              connectivityInterceptor: ConnectivityInterceptor
         ): ApiWeather {
             val requestIntercepter = Interceptor { chain ->
