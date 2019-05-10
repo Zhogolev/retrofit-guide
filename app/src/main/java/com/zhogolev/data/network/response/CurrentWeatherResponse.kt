@@ -1,8 +1,8 @@
-package com.zhogolev.network.data.response
+package com.zhogolev.data.network.response
 
 import com.google.gson.annotations.SerializedName
-import com.zhogolev.db.entity.CurrentWeatherEntry
-import com.zhogolev.db.entity.Location
+import com.zhogolev.data.db.entity.CurrentWeatherEntry
+import com.zhogolev.data.db.entity.Location
 
 
 data class CurrentWeatherResponse(

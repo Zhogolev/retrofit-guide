@@ -1,11 +1,10 @@
-package com.zhogolev.network
+package com.zhogolev.data.network
 
 import android.content.Context
 import android.net.ConnectivityManager
 import com.zhogolev.internal.NoConnectivityException
 import okhttp3.Interceptor
 import okhttp3.Response
-import java.io.IOException
 
 class ConnectivityInterceptorImpl(context: Context) : ConnectivityInterceptor {
 

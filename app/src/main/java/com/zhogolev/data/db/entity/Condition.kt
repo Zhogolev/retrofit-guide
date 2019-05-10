@@ -1,4 +1,4 @@
-package com.zhogolev.db.entity
+package com.zhogolev.data.db.entity
 
 
 data class Condition(

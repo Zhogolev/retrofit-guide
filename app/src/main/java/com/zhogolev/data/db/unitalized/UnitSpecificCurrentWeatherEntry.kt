@@ -1,4 +1,4 @@
-package com.zhogolev.db.unitalized
+package com.zhogolev.data.db.unitalized
 
 interface UnitSpecificCurrentWeatherEntry {
     val temperature: Double

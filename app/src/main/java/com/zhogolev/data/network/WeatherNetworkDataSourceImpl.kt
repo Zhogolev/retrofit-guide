@@ -1,11 +1,10 @@
-package com.zhogolev.network
+package com.zhogolev.data.network
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.zhogolev.internal.NoConnectivityException
-import com.zhogolev.network.data.ApiWeather
-import com.zhogolev.network.data.response.CurrentWeatherResponse
+import com.zhogolev.data.network.response.CurrentWeatherResponse
 
 class WeatherNetworkDataSourceImpl(private val apiWeather: ApiWeather) : WeatherNetworkDataSource {
 

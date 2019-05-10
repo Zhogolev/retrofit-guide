@@ -1,4 +1,4 @@
-package com.zhogolev.network
+package com.zhogolev.data.network
 
 import okhttp3.Interceptor
 

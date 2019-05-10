@@ -1,7 +1,7 @@
-package com.zhogolev.network
+package com.zhogolev.data.network
 
 import androidx.lifecycle.LiveData
-import com.zhogolev.network.data.response.CurrentWeatherResponse
+import com.zhogolev.data.network.response.CurrentWeatherResponse
 
 interface WeatherNetworkDataSource {
     val dowloadedCurrentWeather: LiveData<CurrentWeatherResponse>

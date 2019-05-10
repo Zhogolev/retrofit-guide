@@ -9,10 +9,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 
 import com.zhogolev.R
-import com.zhogolev.network.ConnectivityInterceptor
-import com.zhogolev.network.ConnectivityInterceptorImpl
-import com.zhogolev.network.WeatherNetworkDataSourceImpl
-import com.zhogolev.network.data.ApiWeather
+import com.zhogolev.data.network.ConnectivityInterceptorImpl
+import com.zhogolev.data.network.WeatherNetworkDataSourceImpl
+import com.zhogolev.data.network.ApiWeather
 import kotlinx.android.synthetic.main.current_weather_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

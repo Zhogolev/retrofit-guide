@@ -1,10 +1,10 @@
-package com.zhogolev.db
+package com.zhogolev.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.zhogolev.db.entity.CurrentWeatherEntry
+import com.zhogolev.data.db.entity.CurrentWeatherEntry
 
 @Database(
     entities = [CurrentWeatherEntry::class],

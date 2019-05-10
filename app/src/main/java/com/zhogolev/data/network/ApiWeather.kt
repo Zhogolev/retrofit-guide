@@ -1,9 +1,7 @@
-package com.zhogolev.network.data
+package com.zhogolev.data.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.zhogolev.network.ConnectivityInterceptor
-import com.zhogolev.network.ConnectivityInterceptorImpl
-import com.zhogolev.network.data.response.CurrentWeatherResponse
+import com.zhogolev.data.network.response.CurrentWeatherResponse
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
