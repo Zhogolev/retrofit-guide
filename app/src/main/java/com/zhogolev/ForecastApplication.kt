@@ -1,9 +1,13 @@
 package com.zhogolev
 
 import android.app.Application
+import android.preference.Preference
+import android.preference.PreferenceManager
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.zhogolev.data.db.ForecastDatabase
 import com.zhogolev.data.network.*
+import com.zhogolev.data.provider.UnitProvider
+import com.zhogolev.data.provider.UnitProviderImpl
 import com.zhogolev.data.repository.ForecastRepository
 import com.zhogolev.data.repository.ForecastRepositoryImpl
 import com.zhogolev.ui.weather.current.CurrentWeatherViewModelFactory
@@ -25,11 +29,13 @@ class ForecastApplication: Application(), KodeinAware {
         bind() from singleton {ApiWeather(instance())}
         bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance())}
         bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(),instance()) }
-        bind() from provider { CurrentWeatherViewModelFactory(instance()) }
+        bind<UnitProvider>() with singleton { UnitProviderImpl(instance()) }
+        bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
     }
 
     override fun onCreate() {
         super.onCreate()
         AndroidThreeTen.init(this)
+        PreferenceManager.setDefaultValues(this, R.xml.prefrences, false)
     }
 }
