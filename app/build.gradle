@@ -72,7 +72,7 @@ dependencies {
     implementation "com.xwray:groupie-kotlin-android-extensions:2.1.0"
     // Prefs
     implementation "androidx.preference:preference:1.0.0"
-    // Location
+    // WeatherLocation
     implementation "com.google.android.gms:play-services-location:16.0.0"
     // New Material Design
     implementation "com.google.android.material:material:1.0.0"
