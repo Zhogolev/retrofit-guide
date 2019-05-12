@@ -4,16 +4,14 @@ import androidx.lifecycle.LiveData
 import com.zhogolev.data.db.CurrentWeatherDao
 import com.zhogolev.data.db.WeatherLocationDao
 import com.zhogolev.data.db.entity.WeatherLocation
-import com.zhogolev.data.db.unitalized.UnitSpecificCurrentWeatherEntry
+import com.zhogolev.data.db.unitalized.current.UnitSpecificCurrentWeatherEntry
 import com.zhogolev.data.network.WeatherNetworkDataSource
-import com.zhogolev.data.network.WeatherNetworkDataSourceImpl
 import com.zhogolev.data.network.response.CurrentWeatherResponse
 import com.zhogolev.data.provider.LocationProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.Dispatcher
 import org.threeten.bp.ZonedDateTime
 import java.util.*
 

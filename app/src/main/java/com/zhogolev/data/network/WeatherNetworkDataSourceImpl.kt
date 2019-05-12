@@ -5,6 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.zhogolev.internal.NoConnectivityException
 import com.zhogolev.data.network.response.CurrentWeatherResponse
+import com.zhogolev.data.network.response.FutureWeatherResponse
+
+private const val FUTURE_WEATHER_DAYS = 7
 
 class WeatherNetworkDataSourceImpl(private val apiWeather: ApiWeather) : WeatherNetworkDataSource {
 
@@ -31,5 +34,24 @@ class WeatherNetworkDataSourceImpl(private val apiWeather: ApiWeather) : Weather
        }catch (e: NoConnectivityException){
            Log.e("Connectivity", "no internet connection")
        }
+    }
+
+    private val _downloadedFutureWeather = MutableLiveData<FutureWeatherResponse>()
+
+    override val dowloadedFutureWeather: LiveData<FutureWeatherResponse>
+        get() = _downloadedFutureWeather
+
+    override suspend fun fetchFutureWeather(location: String, languageCode: String, days: Int) {
+        Log.d(TAG, "start fetching data")
+        try {
+            val fetchedFutureWeather = apiWeather
+                .getFutureWeather(location, languageCode, days)
+                .await()
+
+            Log.d(TAG, "fetched data = $fetchedFutureWeather")
+            _downloadedFutureWeather.postValue(fetchedFutureWeather)
+        }catch (e: NoConnectivityException){
+            Log.e("Connectivity", "no internet connection")
+        }
     }
 }
