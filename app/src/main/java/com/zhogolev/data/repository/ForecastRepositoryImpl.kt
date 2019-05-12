@@ -6,7 +6,8 @@ import com.zhogolev.data.db.FutureWeatherDao
 import com.zhogolev.data.db.WeatherLocationDao
 import com.zhogolev.data.db.entity.WeatherLocation
 import com.zhogolev.data.db.unitalized.current.UnitSpecificCurrentWeatherEntry
-import com.zhogolev.data.db.unitalized.future.UnitSpecificSimpleFutureWeatherEntry
+import com.zhogolev.data.db.unitalized.future.detail.UnitSpecificWeatherDetailEntry
+import com.zhogolev.data.db.unitalized.future.list.UnitSpecificSimpleFutureWeatherEntry
 import com.zhogolev.data.network.WeatherNetworkDataSource
 import com.zhogolev.data.network.response.CurrentWeatherResponse
 import com.zhogolev.data.network.response.FutureWeatherResponse
@@ -28,6 +29,17 @@ class ForecastRepositoryImpl(
     private val locationProvider: LocationProvider,
     private val weatherNetworkDataSourece: WeatherNetworkDataSource
 ) : ForecastRepository {
+
+    override suspend fun getDetailWeatherByDateAndMetric(
+        date: LocalDate,
+        metric: Boolean
+    ): LiveData<out UnitSpecificWeatherDetailEntry> {
+       return withContext(Dispatchers.IO) {
+           initWeatherData()
+           return@withContext if(metric) futureWeatherDao.getDetailedWeatherByDateMetric(date)
+           else futureWeatherDao.getDetailedWeatherByDateImperial(date)
+       }
+    }
 
     override suspend fun getWeatherLocation(): LiveData<WeatherLocation> {
          return withContext(Dispatchers.IO){
