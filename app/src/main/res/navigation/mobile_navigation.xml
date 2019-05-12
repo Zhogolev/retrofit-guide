@@ -8,11 +8,16 @@
               android:label="current_weather_fragment" tools:layout="@layout/current_weather_fragment"/>
     <fragment android:id="@+id/future_details_weather"
               android:name="com.zhogolev.ui.weather.future.detail.FutureDetailsWeatherFragment"
-              android:label="future_details_weather_fragment" tools:layout="@layout/future_details_weather_fragment"/>
+              android:label="future_details_weather_fragment" tools:layout="@layout/future_details_weather_fragment">
+        <argument android:name="dateString" app:argType="string"/>
+    </fragment>
     <fragment android:id="@+id/future_list_fragment"
               android:name="com.zhogolev.ui.weather.future.list.FutureWeatherListFragment"
               android:label="future_list_weather_list_fragment"
-              tools:layout="@layout/future_list_weather_list_fragment"/>
+              tools:layout="@layout/future_list_weather_list_fragment">
+        <action android:id="@+id/actionDetail"
+                app:destination="@id/future_details_weather"/>
+    </fragment>
     <fragment android:id="@+id/settings_fragment" android:name="com.zhogolev.ui.settings.SettingFragment"
               android:label="SettingFragment"/>
 </navigation>

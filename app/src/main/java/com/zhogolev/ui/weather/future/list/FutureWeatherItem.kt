@@ -4,15 +4,15 @@ import android.annotation.SuppressLint
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import com.zhogolev.R
-import com.zhogolev.data.db.unitalized.future.MetricSimpleFutureWeatherEntry
-import com.zhogolev.data.db.unitalized.future.UnitSpecificSimpleFutureWeatherEntry
+import com.zhogolev.data.db.unitalized.future.list.MetricSimpleFutureWeatherEntry
+import com.zhogolev.data.db.unitalized.future.list.UnitSpecificSimpleFutureWeatherEntry
 import kotlinx.android.synthetic.main.item_future_weather.*
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 import com.zhogolev.internal.glide.GlideApp
 
 class FutureWeatherItem(
-    private val weatherEntry: UnitSpecificSimpleFutureWeatherEntry
+    val weatherEntry: UnitSpecificSimpleFutureWeatherEntry
 ) : Item(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.apply {

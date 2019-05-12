@@ -1,7 +1,17 @@
 package com.zhogolev.ui.weather.future.detail
 
-import androidx.lifecycle.ViewModel;
+import com.zhogolev.data.provider.UnitProvider
+import com.zhogolev.data.repository.ForecastRepository
+import com.zhogolev.internal.lazyDeferred
+import com.zhogolev.ui.base.WeatherViewModel
+import org.threeten.bp.LocalDate
 
-class FutureDetailsWeatherViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class FutureDetailsWeatherViewModel(
+    private val detailDate: LocalDate,
+    private val forecastRepository: ForecastRepository,
+    unitProvider: UnitProvider
+) : WeatherViewModel(forecastRepository,unitProvider) {
+    val weather by lazyDeferred {
+        forecastRepository.getDetailWeatherByDateAndMetric(detailDate, super.isMetricUnit)
+    }
 }

@@ -16,6 +16,5 @@ class SettingFragment : PreferenceFragmentCompat() {
         super.onActivityCreated(savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = "Settings"
         (activity as AppCompatActivity).supportActionBar?.subtitle = null
-
     }
 }

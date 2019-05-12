@@ -1,4 +1,4 @@
-package com.zhogolev.data.db.unitalized.future
+package com.zhogolev.data.db.unitalized.future.list
 
 import org.threeten.bp.LocalDate
 
