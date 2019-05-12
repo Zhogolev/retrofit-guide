@@ -5,7 +5,10 @@ import android.preference.Preference
 import android.preference.PreferenceManager
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.zhogolev.data.db.ForecastDatabase
+import com.zhogolev.data.db.WeatherLocationDao
 import com.zhogolev.data.network.*
+import com.zhogolev.data.provider.LocationProvider
+import com.zhogolev.data.provider.LocationProviderImpl
 import com.zhogolev.data.provider.UnitProvider
 import com.zhogolev.data.provider.UnitProviderImpl
 import com.zhogolev.data.repository.ForecastRepository
@@ -25,10 +28,12 @@ class ForecastApplication: Application(), KodeinAware {
 
         bind() from singleton { ForecastDatabase(instance()) }
         bind() from singleton { instance<ForecastDatabase>().currentWeatherDao() }
+        bind() from singleton { instance<ForecastDatabase>().weatherLocationDao() }
         bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance())}
         bind() from singleton {ApiWeather(instance())}
         bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance())}
-        bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(),instance()) }
+        bind<LocationProvider>() with singleton { LocationProviderImpl() }
+        bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(),instance(), instance(), instance()) }
         bind<UnitProvider>() with singleton { UnitProviderImpl(instance()) }
         bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
     }
@@ -36,6 +41,6 @@ class ForecastApplication: Application(), KodeinAware {
     override fun onCreate() {
         super.onCreate()
         AndroidThreeTen.init(this)
-        PreferenceManager.setDefaultValues(this, R.xml.prefrences, false)
+        PreferenceManager.setDefaultValues(this, R.xml.prefrences, true)
     }
 }
