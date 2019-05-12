@@ -2,6 +2,7 @@ package com.zhogolev.data.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.zhogolev.data.network.response.CurrentWeatherResponse
+import com.zhogolev.data.network.response.FutureWeatherResponse
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -19,12 +20,18 @@ interface ApiWeather {
     fun getCurrentWeather(
         @Query("q") location: String,
         @Query("lang") languageCode: String = "en"
-
     ): Deferred<CurrentWeatherResponse>
+
+    @GET("forecast.json")
+    fun getFutureWeather(
+        @Query("q") location: String,
+        @Query("lang") languageCode: String = "en",
+        @Query("days") days: Int
+    ): Deferred<FutureWeatherResponse>
 
     companion object {
         operator fun invoke(
-             connectivityInterceptor: ConnectivityInterceptor
+            connectivityInterceptor: ConnectivityInterceptor
         ): ApiWeather {
             val requestIntercepter = Interceptor { chain ->
                 val url = chain.request()
