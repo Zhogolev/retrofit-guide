@@ -1,17 +1,33 @@
 package com.zhogolev.data.db.entity
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import org.threeten.bp.Instant
+import org.threeten.bp.ZoneId
+import org.threeten.bp.ZonedDateTime
 
-data class Location(
+const val DEFAULT_ID = 0
+
+@Entity(tableName = "weather_location")
+data class WeatherLocation(
     val country: String,
     val lat: Double,
-    val localtime: String,
     @SerializedName("localtime_epoch")
-    val localtimeEpoch: Int,
+    val localtimeEpoch: Long,
     val lon: Double,
     val name: String,
     val region: String,
     @SerializedName("tz_id")
     val tzId: String
-)
+) {
+    @PrimaryKey(autoGenerate = false)
+    var id: Int = DEFAULT_ID
+    val zonedDateTime: ZonedDateTime
+        get() {
+            val instance = Instant.ofEpochSecond(localtimeEpoch)
+            val zoneId = ZoneId.of(tzId)
+            return ZonedDateTime.ofInstant(instance, zoneId)
+        }
+}
