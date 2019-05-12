@@ -3,10 +3,11 @@ package com.zhogolev.data.db
 import android.content.Context
 import androidx.room.*
 import com.zhogolev.data.db.entity.CurrentWeatherEntry
+import com.zhogolev.data.db.entity.FutureWeatherEntry
 import com.zhogolev.data.db.entity.WeatherLocation
 
 @Database(
-    entities = [CurrentWeatherEntry::class, WeatherLocation::class],
+    entities = [CurrentWeatherEntry::class, WeatherLocation::class, FutureWeatherEntry::class],
     version = 1
 )
 @TypeConverters(LocalDateConverter::class)

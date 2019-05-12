@@ -1,6 +1,7 @@
 package com.zhogolev.data.db
 
 import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -9,6 +10,7 @@ import com.zhogolev.data.db.unitalized.future.ImperialSimpleFutureWeatherEntry
 import com.zhogolev.data.db.unitalized.future.MetricSimpleFutureWeatherEntry
 import org.threeten.bp.LocalDate
 
+@Dao
 interface FutureWeatherDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

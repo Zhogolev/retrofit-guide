@@ -9,13 +9,13 @@ import android.view.ViewGroup
 
 import com.zhogolev.R
 
-class FutureListWeatherListFragment : Fragment() {
+class FutureWeatherListFragment : Fragment() {
 
     companion object {
-        fun newInstance() = FutureListWeatherListFragment()
+        fun newInstance() = FutureWeatherListFragment()
     }
 
-    private lateinit var viewModel: FutureListWeatherListViewModel
+    private lateinit var viewModel: FutureWeatherListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +26,7 @@ class FutureListWeatherListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(FutureListWeatherListViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(FutureWeatherListViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

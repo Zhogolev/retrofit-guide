@@ -1,26 +1,15 @@
 package com.zhogolev.ui.weather.current
 
-import androidx.lifecycle.ViewModel
 import com.zhogolev.data.provider.UnitProvider
 import com.zhogolev.data.repository.ForecastRepository
-import com.zhogolev.internal.UnitSystem
 import com.zhogolev.internal.lazyDeferred
+import com.zhogolev.ui.base.WeatherViewModel
 
 class CurrentWeatherViewModel(
     private val forecastRepository: ForecastRepository,
-    unitProvider: UnitProvider
-) : ViewModel() {
-
-    private val unitSystem = unitProvider.getUnitSystem()
-
-    val isMetric: Boolean
-        get() = unitSystem == UnitSystem.METRIC
-
+    unitProvider: UnitProvider) : WeatherViewModel(forecastRepository, unitProvider)  {
     val weather by lazyDeferred {
-        forecastRepository.getCurrentWeather(isMetric)
+        forecastRepository.getCurrentWeather(super.isMetricUnit)
     }
 
-    val weatherLocation by lazyDeferred {
-        forecastRepository.getWeatherLocation()
-    }
 }

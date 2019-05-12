@@ -7,7 +7,7 @@ import com.zhogolev.internal.NoConnectivityException
 import com.zhogolev.data.network.response.CurrentWeatherResponse
 import com.zhogolev.data.network.response.FutureWeatherResponse
 
-private const val FUTURE_WEATHER_DAYS = 7
+
 
 class WeatherNetworkDataSourceImpl(private val apiWeather: ApiWeather) : WeatherNetworkDataSource {
 
