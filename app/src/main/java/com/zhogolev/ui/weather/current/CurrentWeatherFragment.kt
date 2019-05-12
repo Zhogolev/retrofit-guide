@@ -98,7 +98,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
     }
 
     private fun getLocalaziedMetric(metric: String, imperial: String): String {
-        return if (viewModel.isMetric) metric else imperial
+        return if (viewModel.isMetricUnit) metric else imperial
     }
 
     private fun updateWind(windDirection: String, windSpeed: Double) {

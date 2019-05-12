@@ -10,7 +10,7 @@ data class ImperialSimpleFutureWeatherEntry(
     @ColumnInfo(name = "avgtempF")
     override val avgTemperature: Double,
 
-    @ColumnInfo(name = "condtition_text")
+    @ColumnInfo(name = "condition_text")
     override val conditionText: String,
 
     @ColumnInfo(name = "condition_icon")
